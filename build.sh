@@ -44,6 +44,8 @@ build() {
     mv emacs.html "$output"/emacs
 }
 
+download
+
 build master
 build 26.3
 
