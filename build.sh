@@ -19,7 +19,9 @@ download() {
 
 config() {
     cd "$SRC"
-    ./autogen.sh && ./configure --with-x-toolkit=no --without-x --without-all
+    make distclean
+    ./autogen.sh
+    ./configure --with-x-toolkit=no --without-x --without-all
 }
 
 build() {
