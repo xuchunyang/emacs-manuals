@@ -8,6 +8,7 @@ set -o xtrace
 ROOT=$PWD
 SRC=$ROOT/emacs
 DIST=$ROOT/dist
+CSS=$ROOT/manual.css
 
 download() {
     if test ! -d "$SRC"; then
@@ -36,12 +37,14 @@ build() {
     mkdir -p "$output"
 
     cd "$SRC"/doc/lispref
-    make -e HTML_OPTS="--html --css-ref=/manual.css" elisp.html
+    make -e HTML_OPTS="--html --css-ref=./manual.css" elisp.html
     mv elisp.html "$output"/elisp
+    cp "$CSS" "$output"/elisp
 
     cd "$SRC"/doc/emacs
-    make -e HTML_OPTS="--html --css-ref=/manual.css" emacs.html
+    make -e HTML_OPTS="--html --css-ref=./manual.css" emacs.html
     mv emacs.html "$output"/emacs
+    cp "$CSS" "$output"/emacs
 }
 
 download
@@ -49,4 +52,3 @@ download
 build master
 build 26.3
 
-ls -R "$DIST"
