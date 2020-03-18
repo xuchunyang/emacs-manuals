@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This is the GNU Emacs Manual,
+updated for Emacs version 28.0.50.
+
+Copyright © 1985-1987, 1993-2020 Free Software Foundation,
+Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being "The GNU Manifesto," "Distribution" and
+"GNU GENERAL PUBLIC LICENSE," with the Front-Cover Texts being "A GNU
+Manual," and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled "GNU Free Documentation
+License."
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Package Menu (GNU Emacs Manual)</title>
+
+<meta name="description" content="Package Menu (GNU Emacs Manual)">
+<meta name="keywords" content="Package Menu (GNU Emacs Manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Key-Index.html#Key-Index" rel="index" title="Key Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Packages.html#Packages" rel="up" title="Packages">
+<link href="Package-Statuses.html#Package-Statuses" rel="next" title="Package Statuses">
+<link href="Packages.html#Packages" rel="prev" title="Packages">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/manual.css">
+
+
+</head>
+
+<body lang="en">
+<a name="Package-Menu"></a>
+<div class="header">
+<p>
+Next: <a href="Package-Statuses.html#Package-Statuses" accesskey="n" rel="next">Package Statuses</a>, Up: <a href="Packages.html#Packages" accesskey="u" rel="up">Packages</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Key-Index.html#Key-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="The-Package-Menu-Buffer"></a>
+<h3 class="section">48.1 The Package Menu Buffer</h3>
+<a name="index-package-menu"></a>
+<a name="index-built_002din-package"></a>
+<a name="index-list_002dpackages"></a>
+
+<p>The command <kbd>M-x list-packages</kbd> brings up the <em>package menu</em>.
+This is a buffer listing all the packages that Emacs knows about, one
+on each line, with the following information:
+</p>
+<ul>
+<li> The package name (e.g., &lsquo;<samp>auctex</samp>&rsquo;).
+
+</li><li> The package&rsquo;s version number (e.g., &lsquo;<samp>11.86</samp>&rsquo;).
+
+</li><li> The package&rsquo;s status&mdash;normally one of &lsquo;<samp>available</samp>&rsquo; (can be
+downloaded from the package archive), &lsquo;<samp>installed</samp>&rsquo;,
+or &lsquo;<samp>built-in</samp>&rsquo; (included in Emacs by default).
+See <a href="Package-Statuses.html#Package-Statuses">Package Statuses</a>.
+
+</li><li> Which package archive this package is from, if you have more than one
+package archive enabled.
+
+</li><li> A short description of the package.
+</li></ul>
+
+<p>The <code>list-packages</code> command accesses the network, to retrieve the
+list of available packages from package archive servers.  If the
+network is unavailable, it falls back on the most recently retrieved
+list.
+</p>
+<p>The following commands are available in the package menu:
+</p>
+<dl compact="compact">
+<dt><kbd>h</kbd></dt>
+<dd><a name="index-h-_0028Package-Menu_0029"></a>
+<a name="index-package_002dmenu_002dquick_002dhelp"></a>
+<p>Print a short message summarizing how to use the package menu
+(<code>package-menu-quick-help</code>).
+</p>
+</dd>
+<dt><kbd>?</kbd></dt>
+<dt><kbd><span class="key">RET</span></kbd></dt>
+<dd><a name="index-_003f-_0028Package-Menu_0029"></a>
+<a name="index-RET-_0028Package-Menu_0029"></a>
+<a name="index-package_002dmenu_002ddescribe_002dpackage"></a>
+<p>Display a help buffer for the package on the current line
+(<code>package-menu-describe-package</code>), similar to the help window
+displayed by the <kbd>C-h P</kbd> command (see <a href="Packages.html#Packages">Packages</a>).
+</p>
+</dd>
+<dt><kbd>i</kbd></dt>
+<dd><a name="index-i-_0028Package-Menu_0029"></a>
+<a name="index-package_002dmenu_002dmark_002dinstall"></a>
+<p>Mark the package on the current line for installation
+(<code>package-menu-mark-install</code>).  If the package status is
+&lsquo;<samp>available</samp>&rsquo;, this adds an &lsquo;<samp>I</samp>&rsquo; character to the start of the
+line; typing <kbd>x</kbd> (see below) will download and install the
+package.
+</p>
+</dd>
+<dt><kbd>d</kbd></dt>
+<dd><a name="index-d-_0028Package-Menu_0029"></a>
+<a name="index-package_002dmenu_002dmark_002ddelete"></a>
+<p>Mark the package on the current line for deletion
+(<code>package-menu-mark-delete</code>).  If the package status is
+&lsquo;<samp>installed</samp>&rsquo;, this adds a &lsquo;<samp>D</samp>&rsquo; character to the start of the
+line; typing <kbd>x</kbd> (see below) will delete the package.
+See <a href="Package-Files.html#Package-Files">Package Files</a>, for information about what package deletion
+entails.
+</p>
+</dd>
+<dt><kbd>~</kbd></dt>
+<dd><a name="index-_007e-_0028Package-Menu_0029"></a>
+<a name="index-package_002dmenu_002dmark_002dobsolete_002dfor_002ddeletion"></a>
+<p>Mark all obsolete packages for deletion
+(<code>package-menu-mark-obsolete-for-deletion</code>).  This marks for
+deletion all the packages whose status is &lsquo;<samp>obsolete</samp>&rsquo;.
+</p>
+</dd>
+<dt><kbd>u</kbd></dt>
+<dt><kbd><span class="key">DEL</span></kbd></dt>
+<dd><a name="index-u-_0028Package-Menu_0029"></a>
+<a name="index-package_002dmenu_002dmark_002dunmark"></a>
+<p>Remove any installation or deletion mark previously added to the
+current line by an <kbd>i</kbd> or <kbd>d</kbd> command
+(<code>package-menu-mark-unmark</code>).
+</p>
+</dd>
+<dt><kbd>U</kbd></dt>
+<dd><a name="index-U-_0028Package-Menu_0029"></a>
+<a name="index-package_002dmenu_002dmark_002dupgrades"></a>
+<p>Mark all package with a newer available version for upgrading
+(<code>package-menu-mark-upgrades</code>).  This places an installation mark
+on the new available versions, and a deletion mark on the old
+installed versions (marked with status &lsquo;<samp>obsolete</samp>&rsquo;).
+</p>
+</dd>
+<dt><kbd>x</kbd></dt>
+<dd><a name="index-x-_0028Package-Menu_0029"></a>
+<a name="index-package_002dmenu_002dasync"></a>
+<a name="index-package_002dmenu_002dexecute"></a>
+<p>Download and install all packages marked with <kbd>i</kbd>, and their
+dependencies; also, delete all packages marked with <kbd>d</kbd>
+(<code>package-menu-execute</code>).  This also removes the marks.
+</p>
+</dd>
+<dt><kbd>g</kbd></dt>
+<dt><kbd>r</kbd></dt>
+<dd><a name="index-g-_0028Package-Menu_0029"></a>
+<a name="index-r-_0028Package-Menu_0029"></a>
+<p>Refresh the package list (<code>revert-buffer</code>).  This fetches the
+list of available packages from the package archive again, and
+redisplays the package list.
+</p>
+</dd>
+<dt><kbd>H</kbd></dt>
+<dd><a name="index-H-_0028Package-Menu_0029"></a>
+<a name="index-package_002dmenu_002dhide_002dpackage"></a>
+<p>Hide packages whose names match a regexp
+(<code>package-menu-hide-package</code>).  This prompts for a regexp, and
+then hides the packages with matching names.  The default value of the
+regexp will hide only the package whose name is at point, so just
+pressing <tt class="key">RET</tt> to the prompt will hide the current package.
+</p>
+</dd>
+<dt><kbd>(</kbd></dt>
+<dd><a name="index-_0028-_0028Package-Menu_0029"></a>
+<a name="index-package_002dmenu_002dtoggle_002dhiding"></a>
+<p>Toggle visibility of old versions of packages and also of versions
+from lower-priority archives (<code>package-menu-toggle-hiding</code>).
+</p>
+</dd>
+<dt><kbd>/ a</kbd></dt>
+<dd><a name="index-_002f-a-_0028Package-Menu_0029"></a>
+<a name="index-package_002dmenu_002dfilter_002dby_002darchive"></a>
+<p>Filter package list by archive (<code>package-menu-filter-by-archive</code>).
+This prompts for a package archive (e.g., &lsquo;<samp>gnu</samp>&rsquo;), then shows only
+packages from that archive.
+</p>
+</dd>
+<dt><kbd>/ k</kbd></dt>
+<dd><a name="index-_002f-k-_0028Package-Menu_0029"></a>
+<a name="index-package_002dmenu_002dfilter_002dby_002dkeyword"></a>
+<p>Filter package list by keyword (<code>package-menu-filter-by-keyword</code>).
+This prompts for a keyword (e.g., &lsquo;<samp>games</samp>&rsquo;), then shows only
+packages with that keyword.
+</p>
+</dd>
+<dt><kbd>/ n</kbd></dt>
+<dd><a name="index-_002f-n-_0028Package-Menu_0029"></a>
+<a name="index-package_002dmenu_002dfilter_002dby_002dname"></a>
+<p>Filter package list by name (<code>package-menu-filter-by-name</code>).
+This prompts for a regular expression, then shows only packages
+with names matching that regexp.
+</p>
+</dd>
+<dt><kbd>/ s</kbd></dt>
+<dd><a name="index-_002f-s-_0028Package-Menu_0029"></a>
+<a name="index-package_002dmenu_002dfilter_002dby_002dstatus"></a>
+<p>Filter package list by status (<code>package-menu-filter-by-status</code>).
+This prompts for one or more statuses (e.g., &lsquo;<samp>available</samp>&rsquo;), then
+shows only packages with matching status.
+</p>
+</dd>
+<dt><kbd>/ v</kbd></dt>
+<dd><a name="index-_002f-v-_0028Package-Menu_0029"></a>
+<a name="index-package_002dmenu_002dfilter_002dby_002dversion"></a>
+<p>Filter package list by version (<code>package-menu-filter-by-version</code>).
+This prompts first for one of the qualifiers &lsquo;<samp>&lt;</samp>&rsquo;, &lsquo;<samp>&gt;</samp>&rsquo; or
+&lsquo;<samp>=</samp>&rsquo;, and then a package version, and shows packages that has a
+lower, equal or higher version than the one specified.
+</p>
+</dd>
+<dt><kbd>/ /</kbd></dt>
+<dd><a name="index-_002f-_002f-_0028Package-Menu_0029"></a>
+<a name="index-package_002dmenu_002dfilter_002dclear"></a>
+<p>Clear filter currently applied to the package list
+(<code>package-menu-filter-clear</code>).
+</p></dd>
+</dl>
+
+<p>For example, you can install a package by typing <kbd>i</kbd> on the line
+listing that package, followed by <kbd>x</kbd>.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Package-Statuses.html#Package-Statuses" accesskey="n" rel="next">Package Statuses</a>, Up: <a href="Packages.html#Packages" accesskey="u" rel="up">Packages</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Key-Index.html#Key-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

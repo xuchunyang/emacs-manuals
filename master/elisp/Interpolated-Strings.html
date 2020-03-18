@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This is the GNU Emacs Lisp Reference Manual
+corresponding to Emacs version 28.0.50.
+
+Copyright © 1990-1996, 1998-2020 Free Software Foundation,
+Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being "GNU General Public License," with the
+Front-Cover Texts being "A GNU Manual," and with the Back-Cover
+Texts as in (a) below.  A copy of the license is included in the
+section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Interpolated Strings (GNU Emacs Lisp Reference Manual)</title>
+
+<meta name="description" content="Interpolated Strings (GNU Emacs Lisp Reference Manual)">
+<meta name="keywords" content="Interpolated Strings (GNU Emacs Lisp Reference Manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Text.html#Text" rel="up" title="Text">
+<link href="Checksum_002fHash.html#Checksum_002fHash" rel="next" title="Checksum/Hash">
+<link href="Base-64.html#Base-64" rel="prev" title="Base 64">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/manual.css">
+
+
+</head>
+
+<body lang="en">
+<a name="Interpolated-Strings"></a>
+<div class="header">
+<p>
+Next: <a href="Checksum_002fHash.html#Checksum_002fHash" accesskey="n" rel="next">Checksum/Hash</a>, Previous: <a href="Base-64.html#Base-64" accesskey="p" rel="prev">Base 64</a>, Up: <a href="Text.html#Text" accesskey="u" rel="up">Text</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Formatting-Customizable-Strings"></a>
+<h3 class="section">32.26 Formatting Customizable Strings</h3>
+
+<p>It is, in some circumstances, useful to present users with a string to
+be customized that can then be expanded programmatically.  For
+instance, <code>erc-header-line-format</code> is <code>&quot;%n on %t (%m,%l)
+%o&quot;</code>, and each of those characters after the percent signs are
+expanded when the header line is computed.  To do this, the
+<code>format-spec</code> function is used:
+</p>
+<dl>
+<dt><a name="index-format_002dspec"></a>Function: <strong>format-spec</strong> <em>format specification &amp;optional only-present</em></dt>
+<dd><p><var>format</var> is the format specification string as in the example
+above.  <var>specification</var> is an alist that has elements where the
+<code>car</code> is a character and the <code>cdr</code> is the substitution.
+</p>
+<p>If <code>ONLY-PRESENT</code> is <code>nil</code>, errors will be signalled if a
+format character has been used that&rsquo;s not present in
+<var>specification</var>.  If it&rsquo;s non-<code>nil</code>, that format
+specification is left verbatim in the result.
+</p></dd></dl>
+
+<p>Here&rsquo;s a trivial example:
+</p>
+<div class="example">
+<pre class="example">(format-spec &quot;su - %u %l&quot;
+             `((?u . ,(user-login-name))
+               (?l . &quot;ls&quot;)))
+     &rArr; &quot;su - foo ls&quot;
+</pre></div>
+
+<p>In addition to allowing padding/limiting to a certain length, the
+following modifiers can be used:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>0</samp>&rsquo;</dt>
+<dd><p>Use zero padding.
+</p>
+</dd>
+<dt>&lsquo;<samp>&nbsp;</samp>&rsquo;</dt>
+<dd><p>User space padding.
+</p>
+</dd>
+<dt>&lsquo;<samp>-</samp>&rsquo;</dt>
+<dd><p>Pad to the right.
+</p>
+</dd>
+<dt>&lsquo;<samp>^</samp>&rsquo;</dt>
+<dd><p>Use upper case.
+</p>
+</dd>
+<dt>&lsquo;<samp>_</samp>&rsquo;</dt>
+<dd><p>Use lower case.
+</p>
+</dd>
+<dt>&lsquo;<samp>&lt;</samp>&rsquo;</dt>
+<dd><p>If the length needs to limited, remove characters from the left.
+</p>
+</dd>
+<dt>&lsquo;<samp>&gt;</samp>&rsquo;</dt>
+<dd><p>Same as previous, but remove characters from the right.
+</p></dd>
+</dl>
+
+<p>If contradictory modifiers are used (for instance, both upper and
+lower case), then what happens is undefined.
+</p>
+<p>As an example, &lsquo;<samp>&quot;%&lt;010b&quot;</samp>&rsquo; means &ldquo;insert the &lsquo;<samp>b</samp>&rsquo; expansion,
+but pad with leading zeroes if it&rsquo;s less than ten characters, and if
+it&rsquo;s more than ten characters, shorten by removing characters from the
+left&rdquo;.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Checksum_002fHash.html#Checksum_002fHash" accesskey="n" rel="next">Checksum/Hash</a>, Previous: <a href="Base-64.html#Base-64" accesskey="p" rel="prev">Base 64</a>, Up: <a href="Text.html#Text" accesskey="u" rel="up">Text</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This is the GNU Emacs Manual,
+updated for Emacs version 28.0.50.
+
+Copyright © 1985-1987, 1993-2020 Free Software Foundation,
+Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being "The GNU Manifesto," "Distribution" and
+"GNU GENERAL PUBLIC LICENSE," with the Front-Cover Texts being "A GNU
+Manual," and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled "GNU Free Documentation
+License."
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Find Init (GNU Emacs Manual)</title>
+
+<meta name="description" content="Find Init (GNU Emacs Manual)">
+<meta name="keywords" content="Find Init (GNU Emacs Manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Key-Index.html#Key-Index" rel="index" title="Key Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Init-File.html#Init-File" rel="up" title="Init File">
+<link href="Init-Non_002dASCII.html#Init-Non_002dASCII" rel="next" title="Init Non-ASCII">
+<link href="Terminal-Init.html#Terminal-Init" rel="prev" title="Terminal Init">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/manual.css">
+
+
+</head>
+
+<body lang="en">
+<a name="Find-Init"></a>
+<div class="header">
+<p>
+Next: <a href="Init-Non_002dASCII.html#Init-Non_002dASCII" accesskey="n" rel="next">Init Non-ASCII</a>, Previous: <a href="Terminal-Init.html#Terminal-Init" accesskey="p" rel="prev">Terminal Init</a>, Up: <a href="Init-File.html#Init-File" accesskey="u" rel="up">Init File</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Key-Index.html#Key-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="How-Emacs-Finds-Your-Init-File"></a>
+<h4 class="subsection">49.4.4 How Emacs Finds Your Init File</h4>
+
+<p>Emacs normally finds your init file in a location under your home
+directory.  See <a href="Init-File.html#Init-File">Init File</a>.  By default this location is
+<samp>~/.emacs.d/init.el</samp> where <samp>~/</samp> stands for your home directory.
+This default can be overridden as described below.
+</p>
+<p>Emacs looks for your init file
+using the filenames <samp>~/.emacs.el</samp>, <samp>~/.emacs</samp>, or
+<samp>~/.emacs.d/init.el</samp>; you can choose to use any one of these
+names.  (Note that only the locations directly in your home directory
+have a leading dot in the location&rsquo;s basename.)
+</p>
+<p>Emacs can also look in an XDG-compatible location for <samp>init.el</samp>,
+the default is the directory <samp>~/.config/emacs</samp>.  This can be
+overriden by setting <code>XDG_CONFIG_HOME</code> in your environment, its
+value replaces <samp>~/.config</samp> in the name of the default XDG init
+file.  However <samp>~/.emacs.d</samp> and <samp>~/.emacs</samp> are always
+preferred if they exist, which means that you must delete or rename
+them in order to use the XDG location.
+</p>
+<p>Note also that if neither the XDG location nor <samp>~/.emacs.d</samp>
+exist, then Emacs will create <samp>~/.emacs.d</samp> (and therefore use it
+during subsequent invocations).
+</p>
+<p>Emacs will set <code>user-emacs-directory</code> to the directory it decides
+to use.
+</p>
+<p>Although this is backward-compatible with older Emacs versions, modern
+POSIX platforms prefer putting your initialization files under
+<samp>~/.config</samp> so that troubleshooting a problem that might be due
+to a bad init file, or archiving a collection of init files, can be
+done by renaming that directory.  To help older Emacs versions find
+configuration files in their current default locations, you can
+execute the following Emacs Lisp code:
+</p>
+<div class="example">
+<pre class="example">(make-symbolic-link &quot;.config/emacs&quot; &quot;~/.emacs.d&quot;)
+</pre></div>
+
+<p>However, if you run Emacs from a shell started by <code>su</code> and
+<code>XDG_CONFIG_HOME</code> is not set in your environment, Emacs
+tries to find your own initialization files, not that of the user you are
+currently pretending to be.  The idea is that you should get your own
+editor customizations even if you are running as the super user.
+</p>
+<p>More precisely, Emacs first determines which user&rsquo;s init file to use.
+It gets your user name from the environment variables <code>LOGNAME</code> and
+<code>USER</code>; if neither of those exists, it uses the effective user-ID.
+If that user name matches the real user-ID, then Emacs uses <code>HOME</code>;
+otherwise, it looks up the home directory corresponding to that user
+name in the system&rsquo;s data base of users.
+</p>
+<p>For brevity the rest of the Emacs documentation generally uses just
+the current default location <samp>~/.emacs.d/init.el</samp> for the
+init file.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Init-Non_002dASCII.html#Init-Non_002dASCII" accesskey="n" rel="next">Init Non-ASCII</a>, Previous: <a href="Terminal-Init.html#Terminal-Init" accesskey="p" rel="prev">Terminal Init</a>, Up: <a href="Init-File.html#Init-File" accesskey="u" rel="up">Init File</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Key-Index.html#Key-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

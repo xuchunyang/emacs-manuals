@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This is the GNU Emacs Manual,
+updated for Emacs version 28.0.50.
+
+Copyright © 1985-1987, 1993-2020 Free Software Foundation,
+Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being "The GNU Manifesto," "Distribution" and
+"GNU GENERAL PUBLIC LICENSE," with the Front-Cover Texts being "A GNU
+Manual," and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled "GNU Free Documentation
+License."
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Window Choice (GNU Emacs Manual)</title>
+
+<meta name="description" content="Window Choice (GNU Emacs Manual)">
+<meta name="keywords" content="Window Choice (GNU Emacs Manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Key-Index.html#Key-Index" rel="index" title="Key Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Displaying-Buffers.html#Displaying-Buffers" rel="up" title="Displaying Buffers">
+<link href="Temporary-Displays.html#Temporary-Displays" rel="next" title="Temporary Displays">
+<link href="Displaying-Buffers.html#Displaying-Buffers" rel="prev" title="Displaying Buffers">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/manual.css">
+
+
+</head>
+
+<body lang="en">
+<a name="Window-Choice"></a>
+<div class="header">
+<p>
+Next: <a href="Temporary-Displays.html#Temporary-Displays" accesskey="n" rel="next">Temporary Displays</a>, Up: <a href="Displaying-Buffers.html#Displaying-Buffers" accesskey="u" rel="up">Displaying Buffers</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Key-Index.html#Key-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="How-display_002dbuffer-works"></a>
+<h4 class="subsection">20.6.1 How <code>display-buffer</code> works</h4>
+<a name="index-display_002dbuffer_002c-detailed-description"></a>
+
+<p>The <code>display-buffer</code> command (as well as commands that call it
+internally) chooses a window to display by following the steps given
+below.  See <a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/Choosing-Window.html#Choosing-Window">Choosing a Window for Displaying a
+Buffer</a> in <cite>The Emacs Lisp Reference Manual</cite>, for details about how
+to alter this sequence of steps.
+</p>
+<ul>
+<li> If the buffer should be displayed in the selected window regardless of
+other considerations, reuse the selected window.  By default, this
+step is skipped, but you can tell Emacs not to skip it by adding a
+regular expression matching the buffer&rsquo;s name together with a
+reference to the <code>display-buffer-same-window</code> action function
+(see <a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/Buffer-Display-Action-Functions.html#Buffer-Display-Action-Functions">Action Functions for Buffer
+Display</a> in <cite>The Emacs Lisp Reference Manual</cite>) to the option
+<code>display-buffer-alist</code> (see <a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/Choosing-Window.html#Choosing-Window">Choosing a Window
+for Displaying a Buffer</a> in <cite>The Emacs Lisp Reference Manual</cite>).
+For example, to display the buffer <samp>*scratch*</samp> preferably in the
+selected window write:
+
+<div class="example">
+<pre class="example">(customize-set-variable
+ 'display-buffer-alist
+ '(&quot;\\*scratch\\*&quot; (display-buffer-same-window)))
+</pre></div>
+
+<p>By default, <code>display-buffer-alist</code> is <code>nil</code>.
+</p>
+</li><li> Otherwise, if the buffer is already displayed in an existing window,
+reuse that window.  Normally, only windows on the selected frame are
+considered, but windows on other frames are also reusable if you use
+the corresponding <code>reusable-frames</code> action alist entry
+(see <a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/Buffer-Display-Action-Alists.html#Buffer-Display-Action-Alists">Action Alists for Buffer
+Display</a> in <cite>The Emacs Lisp Reference Manual</cite>).  See the
+next step for an example of how to do that.
+
+</li><li> Otherwise, optionally create a new frame and display the buffer there.
+By default, this step is skipped.  To enable it, change the value of
+the option <code>display-buffer-base-action</code> (see <a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/Choosing-Window.html#Choosing-Window">Choosing a Window for Displaying a Buffer</a> in <cite>The Emacs
+Lisp Reference Manual</cite>) as follows:
+
+<div class="example">
+<pre class="example">(customize-set-variable
+ 'display-buffer-base-action
+ '((display-buffer-reuse-window display-buffer-pop-up-frame)
+   (reusable-frames . 0)))
+</pre></div>
+
+<p>This customization will also try to make the preceding step search for
+a reusable window on all visible or iconified frames.
+</p>
+</li><li> Otherwise, try to create a new window by splitting a window on the
+selected frame, and display the buffer in that new window.
+
+<a name="index-split_002dheight_002dthreshold"></a>
+<a name="index-split_002dwidth_002dthreshold"></a>
+<p>The split can be either vertical or horizontal, depending on the
+variables <code>split-height-threshold</code> and
+<code>split-width-threshold</code>.  These variables should have integer
+values.  If <code>split-height-threshold</code> is smaller than the chosen
+window&rsquo;s height, the split puts the new window below.  Otherwise, if
+<code>split-width-threshold</code> is smaller than the window&rsquo;s width, the
+split puts the new window on the right.  If neither condition holds,
+Emacs tries to split so that the new window is below&mdash;but only if the
+window was not split before (to avoid excessive splitting).
+</p>
+</li><li> Otherwise, display the buffer in a window previously showing it.
+Normally, only windows on the selected frame are considered, but with
+a suitable <code>reusable-frames</code> action alist entry (see above) the
+window may be also on another frame.
+
+</li><li> Otherwise, display the buffer in an existing window on the selected
+frame.
+
+</li><li> If all the above methods fail for whatever reason, create a new frame
+and display the buffer there.
+</li></ul>
+
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Temporary-Displays.html#Temporary-Displays" accesskey="n" rel="next">Temporary Displays</a>, Up: <a href="Displaying-Buffers.html#Displaying-Buffers" accesskey="u" rel="up">Displaying Buffers</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Key-Index.html#Key-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>
