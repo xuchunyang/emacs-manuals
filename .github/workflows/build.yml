@@ -32,6 +32,10 @@ jobs:
         echo Add other actions to build,
         echo test, and deploy your project.
 
+    - name: Install texinfo
+      run: |
+        apt-get update && apt-get install -y texinfo
+
     # Runs a set of commands using the runners shell
     - name: Build manuals
       run: ./build.sh
