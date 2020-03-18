@@ -34,7 +34,7 @@ jobs:
 
     - name: Install texinfo
       run: |
-        apt-get update && apt-get install -y texinfo
+        sudo apt-get update && sudo apt-get install -y texinfo
 
     # Runs a set of commands using the runners shell
     - name: Build manuals
