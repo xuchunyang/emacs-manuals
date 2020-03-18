@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This is the GNU Emacs Manual,
+updated for Emacs version 26.2.
+
+Copyright © 1985-1987, 1993-2019 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being "The GNU Manifesto," "Distribution" and
+"GNU GENERAL PUBLIC LICENSE," with the Front-Cover Texts being "A GNU
+Manual," and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled "GNU Free Documentation
+License."
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Shell Ring (GNU Emacs Manual)</title>
+
+<meta name="description" content="Shell Ring (GNU Emacs Manual)">
+<meta name="keywords" content="Shell Ring (GNU Emacs Manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Key-Index.html#Key-Index" rel="index" title="Key Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Shell-History.html#Shell-History" rel="up" title="Shell History">
+<link href="Shell-History-Copying.html#Shell-History-Copying" rel="next" title="Shell History Copying">
+<link href="Shell-History.html#Shell-History" rel="prev" title="Shell History">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="./manual.css">
+
+
+</head>
+
+<body lang="en">
+<a name="Shell-Ring"></a>
+<div class="header">
+<p>
+Next: <a href="Shell-History-Copying.html#Shell-History-Copying" accesskey="n" rel="next">Shell History Copying</a>, Up: <a href="Shell-History.html#Shell-History" accesskey="u" rel="up">Shell History</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Key-Index.html#Key-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Shell-History-Ring"></a>
+<h4 class="subsection">38.5.1 Shell History Ring</h4>
+
+<dl compact="compact">
+<dd><a name="index-comint_002dprevious_002dinput"></a>
+<a name="index-M_002dp-_0028Shell-mode_0029"></a>
+</dd>
+<dt><kbd>M-p</kbd></dt>
+<dt><kbd>C-<span class="key">UP</span></kbd></dt>
+<dd><p>Fetch the next earlier old shell command
+(<code>comint-previous-input</code>).
+</p>
+<a name="index-M_002dn-_0028Shell-mode_0029"></a>
+<a name="index-comint_002dnext_002dinput"></a>
+</dd>
+<dt><kbd>M-n</kbd></dt>
+<dt><kbd>C-<span class="key">DOWN</span></kbd></dt>
+<dd><p>Fetch the next later old shell command (<code>comint-next-input</code>).
+</p>
+<a name="index-M_002dr-_0028Shell-mode_0029"></a>
+<a name="index-comint_002dhistory_002disearch_002dbackward_002dregexp"></a>
+</dd>
+<dt><kbd>M-r</kbd></dt>
+<dd><p>Begin an incremental regexp search of old shell commands
+(<code>comint-history-isearch-backward-regexp</code>).
+</p>
+</dd>
+<dt><kbd>C-c C-x</kbd></dt>
+<dd><a name="index-C_002dc-C_002dx-_0028Shell-mode_0029"></a>
+<a name="index-comint_002dget_002dnext_002dfrom_002dhistory"></a>
+<p>Fetch the next subsequent command from the history
+(<code>comint-get-next-from-history</code>).
+</p>
+</dd>
+<dt><kbd>C-c .</kbd></dt>
+<dd><a name="index-C_002dc-_002e-_0028Shell-mode_0029"></a>
+<a name="index-comint_002dinput_002dprevious_002dargument"></a>
+<p>Fetch one argument from an old shell command
+(<code>comint-input-previous-argument</code>).
+</p>
+</dd>
+<dt><kbd>C-c C-l</kbd></dt>
+<dd><a name="index-C_002dc-C_002dl-_0028Shell-mode_0029"></a>
+<a name="index-comint_002ddynamic_002dlist_002dinput_002dring"></a>
+<p>Display the buffer&rsquo;s history of shell commands in another window
+(<code>comint-dynamic-list-input-ring</code>).
+</p></dd>
+</dl>
+
+<p>Shell buffers provide a history of previously entered shell
+commands.  To reuse shell commands from the history, use the editing
+commands <kbd>M-p</kbd>, <kbd>M-n</kbd>, and <kbd>M-r</kbd>.  These work
+similar to the minibuffer history commands (see <a href="Minibuffer-History.html#Minibuffer-History">Minibuffer History</a>), except that they operate within the Shell buffer rather
+than the minibuffer, and <code>M-r</code> in a Shell buffer invokes
+incremental search through shell command history.
+</p>
+<p><kbd>M-p</kbd> fetches an earlier shell command to the end of the shell
+buffer.  Successive use of <kbd>M-p</kbd> fetches successively earlier
+shell commands, each replacing any text that was already present as
+potential shell input.  <kbd>M-n</kbd> does likewise except that it finds
+successively more recent shell commands from the buffer.
+<kbd>C-<span class="key">UP</span></kbd> works like <kbd>M-p</kbd>, and <kbd>C-<span class="key">DOWN</span></kbd> like
+<kbd>M-n</kbd>.
+</p>
+<p>The history search command <kbd>M-r</kbd> begins an incremental regular
+expression search of previous shell commands.  After typing <kbd>M-r</kbd>,
+start typing the desired string or regular expression; the last
+matching shell command will be displayed in the current line.
+Incremental search commands have their usual effects&mdash;for instance,
+<kbd>C-s</kbd> and <kbd>C-r</kbd> search forward and backward for the next match
+(see <a href="Incremental-Search.html#Incremental-Search">Incremental Search</a>).  When you find the desired input, type
+<tt class="key">RET</tt> to terminate the search.  This puts the input in the command
+line.  Any partial input you were composing before navigating the
+history list is restored when you go to the beginning or end of the
+history ring.
+</p>
+<p>Often it is useful to reexecute several successive shell commands that
+were previously executed in sequence.  To do this, first find and
+reexecute the first command of the sequence.  Then type <kbd>C-c C-x</kbd>;
+that will fetch the following command&mdash;the one that follows the command
+you just repeated.  Then type <tt class="key">RET</tt> to reexecute this command.  You
+can reexecute several successive commands by typing <kbd>C-c C-x
+<span class="key">RET</span></kbd> over and over.
+</p>
+<p>The command <kbd>C-c .</kbd> (<code>comint-input-previous-argument</code>)
+copies an individual argument from a previous command, like
+<kbd><span class="key">ESC</span> .</kbd> in Bash.  The simplest use copies the last argument from the
+previous shell command.  With a prefix argument <var>n</var>, it copies the
+<var>n</var>th argument instead.  Repeating <kbd>C-c .</kbd> copies from an
+earlier shell command instead, always using the same value of <var>n</var>
+(don&rsquo;t give a prefix argument when you repeat the <kbd>C-c .</kbd>
+command).
+</p>
+<p>These commands get the text of previous shell commands from a special
+history list, not from the shell buffer itself.  Thus, editing the shell
+buffer, or even killing large parts of it, does not affect the history
+that these commands access.
+</p>
+<a name="index-shell_002dinput_002dring_002dfile_002dname"></a>
+<p>Some shells store their command histories in files so that you can
+refer to commands from previous shell sessions.  Emacs reads
+the command history file for your chosen shell, to initialize its own
+command history.  The file name is <samp>~/.bash_history</samp> for bash,
+<samp>~/.sh_history</samp> for ksh, and <samp>~/.history</samp> for other shells.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Shell-History-Copying.html#Shell-History-Copying" accesskey="n" rel="next">Shell History Copying</a>, Up: <a href="Shell-History.html#Shell-History" accesskey="u" rel="up">Shell History</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Key-Index.html#Key-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

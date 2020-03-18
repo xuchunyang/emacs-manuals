@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This is the GNU Emacs Manual,
+updated for Emacs version 26.2.
+
+Copyright © 1985-1987, 1993-2019 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being "The GNU Manifesto," "Distribution" and
+"GNU GENERAL PUBLIC LICENSE," with the Front-Cover Texts being "A GNU
+Manual," and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled "GNU Free Documentation
+License."
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>TeX Mode (GNU Emacs Manual)</title>
+
+<meta name="description" content="TeX Mode (GNU Emacs Manual)">
+<meta name="keywords" content="TeX Mode (GNU Emacs Manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Key-Index.html#Key-Index" rel="index" title="Key Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Text.html#Text" rel="up" title="Text">
+<link href="TeX-Editing.html#TeX-Editing" rel="next" title="TeX Editing">
+<link href="Org-Authoring.html#Org-Authoring" rel="prev" title="Org Authoring">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="./manual.css">
+
+
+</head>
+
+<body lang="en">
+<a name="TeX-Mode"></a>
+<div class="header">
+<p>
+Next: <a href="HTML-Mode.html#HTML-Mode" accesskey="n" rel="next">HTML Mode</a>, Previous: <a href="Org-Mode.html#Org-Mode" accesskey="p" rel="prev">Org Mode</a>, Up: <a href="Text.html#Text" accesskey="u" rel="up">Text</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Key-Index.html#Key-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="TeX-Mode-1"></a>
+<h3 class="section">25.11 TeX Mode</h3>
+<a name="index-TeX-mode"></a>
+<a name="index-LaTeX-mode"></a>
+<a name="index-SliTeX-mode"></a>
+<a name="index-DocTeX-mode"></a>
+<a name="index-mode_002c-TeX"></a>
+<a name="index-mode_002c-LaTeX"></a>
+<a name="index-mode_002c-SliTeX"></a>
+<a name="index-mode_002c-DocTeX"></a>
+<a name="index-tex_002dmode"></a>
+<a name="index-plain_002dtex_002dmode"></a>
+<a name="index-latex_002dmode"></a>
+<a name="index-slitex_002dmode"></a>
+<a name="index-doctex_002dmode"></a>
+<a name="index-bibtex_002dmode"></a>
+
+<p>TeX is a powerful text formatter written by Donald Knuth; like
+GNU Emacs, it is free software.  The TeX format has several
+variants, including LaTeX, a simplified input format for TeX;
+DocTeX, a special file format in which the LaTeX sources are
+written, combining sources with documentation; and SliTeX, an
+obsolete special form of LaTeX<a name="DOCF12" href="#FOOT12"><sup>12</sup></a>.
+</p>
+<a name="index-tex_002ddefault_002dmode"></a>
+<p>Emacs provides a TeX major mode for each of these variants: Plain
+TeX mode, LaTeX mode, DocTeX mode, and SliTeX mode.  Emacs
+selects the appropriate mode by looking at the contents of the buffer.
+(This is done by invoking the <code>tex-mode</code> command, which is
+normally called automatically when you visit a TeX-like file.
+See <a href="Choosing-Modes.html#Choosing-Modes">Choosing Modes</a>.)  If the contents are insufficient to determine
+this, Emacs chooses the mode specified by the variable
+<code>tex-default-mode</code>; its default value is <code>latex-mode</code>.  If
+Emacs does not guess right, you can select the correct variant of
+TeX mode using the commands <code>plain-tex-mode</code>,
+<code>latex-mode</code>, <code>slitex-mode</code>, or <code>doctex-mode</code>.
+</p>
+<p>The following sections document the features of TeX mode and its
+variants.  There are several other TeX-related Emacs packages,
+which are not documented in this manual:
+</p>
+<ul>
+<li> BibTeX mode is a major mode for BibTeX files, which are commonly
+used for keeping bibliographic references for LaTeX documents.  For
+more information, see the documentation string for the command
+<code>bibtex-mode</code>.
+
+</li><li> The RefTeX package provides a minor mode which can be used with
+LaTeX mode to manage bibliographic references.
+For more information, see the RefTeX Info manual, which is
+distributed with Emacs.
+
+</li><li> The AUCTeX package provides more advanced features for editing
+TeX and its related formats, including the ability to preview
+TeX equations within Emacs buffers.  Unlike BibTeX mode and the
+RefTeX package, AUCTeX is not distributed with Emacs by default.
+It can be downloaded via the Package Menu (see <a href="Packages.html#Packages">Packages</a>); once
+installed, see
+the AUCTeX manual, which is included with the package.
+</li></ul>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="TeX-Editing.html#TeX-Editing" accesskey="1">TeX Editing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Special commands for editing in TeX mode.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="LaTeX-Editing.html#LaTeX-Editing" accesskey="2">LaTeX Editing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Additional commands for LaTeX input files.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="TeX-Print.html#TeX-Print" accesskey="3">TeX Print</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands for printing part of a file with TeX.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="TeX-Misc.html#TeX-Misc" accesskey="4">TeX Misc</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Customization of TeX mode, and related features.
+</td></tr>
+</table>
+
+<div class="footnote">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h3><a name="FOOT12" href="#DOCF12">(12)</a></h3>
+<p>It has been replaced by the &lsquo;<samp>slides</samp>&rsquo; document class, which comes
+with LaTeX.</p>
+</div>
+<hr>
+<div class="header">
+<p>
+Next: <a href="HTML-Mode.html#HTML-Mode" accesskey="n" rel="next">HTML Mode</a>, Previous: <a href="Org-Mode.html#Org-Mode" accesskey="p" rel="prev">Org Mode</a>, Up: <a href="Text.html#Text" accesskey="u" rel="up">Text</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Key-Index.html#Key-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

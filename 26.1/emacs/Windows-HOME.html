@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This is the GNU Emacs Manual,
+updated for Emacs version 26.1.
+
+Copyright © 1985-1987, 1993-2018 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being "The GNU Manifesto," "Distribution" and
+"GNU GENERAL PUBLIC LICENSE," with the Front-Cover Texts being "A GNU
+Manual," and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled "GNU Free Documentation
+License."
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Windows HOME (GNU Emacs Manual)</title>
+
+<meta name="description" content="Windows HOME (GNU Emacs Manual)">
+<meta name="keywords" content="Windows HOME (GNU Emacs Manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Key-Index.html#Key-Index" rel="index" title="Key Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Microsoft-Windows.html#Microsoft-Windows" rel="up" title="Microsoft Windows">
+<link href="Windows-Keyboard.html#Windows-Keyboard" rel="next" title="Windows Keyboard">
+<link href="ls-in-Lisp.html#ls-in-Lisp" rel="prev" title="ls in Lisp">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="./manual.css">
+
+
+</head>
+
+<body lang="en">
+<a name="Windows-HOME"></a>
+<div class="header">
+<p>
+Next: <a href="Windows-Keyboard.html#Windows-Keyboard" accesskey="n" rel="next">Windows Keyboard</a>, Previous: <a href="ls-in-Lisp.html#ls-in-Lisp" accesskey="p" rel="prev">ls in Lisp</a>, Up: <a href="Microsoft-Windows.html#Microsoft-Windows" accesskey="u" rel="up">Microsoft Windows</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Key-Index.html#Key-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="HOME-and-Startup-Directories-on-MS_002dWindows"></a>
+<h3 class="section">G.5 HOME and Startup Directories on MS-Windows</h3>
+<a name="index-HOME-directory-on-MS_002dWindows"></a>
+
+<p>The Windows equivalent of <code>HOME</code> is the <em>user-specific
+application data directory</em>.  The actual location depends on the
+Windows version; typical values are <samp>C:\Documents and
+Settings\<var>username</var>\Application Data</samp> on Windows 2000 up to XP,
+<samp>C:\Users\<var>username</var>\AppData\Roaming</samp> on Windows Vista and
+later, and either <samp>C:\WINDOWS\Application Data</samp> or
+<samp>C:\WINDOWS\Profiles\<var>username</var>\Application Data</samp> on Windows
+9X/ME.  If this directory does not exist or cannot be accessed, Emacs
+falls back to <samp>C:\</samp> as the default value of <code>HOME</code>.
+</p>
+<p>You can override this default value of <code>HOME</code> by explicitly
+setting the environment variable <code>HOME</code> to point to any directory
+on your system.  <code>HOME</code> can be set either from the command shell
+prompt or from &lsquo;<samp>Properties</samp>&rsquo; dialog of &lsquo;<samp>My Computer</samp>&rsquo;.
+<code>HOME</code> can also be set in the system registry,
+see <a href="MS_002dWindows-Registry.html#MS_002dWindows-Registry">MS-Windows Registry</a>.
+</p>
+<p>For compatibility with older versions of Emacs<a name="DOCF25" href="#FOOT25"><sup>25</sup></a>, if there is a file named <samp>.emacs</samp> in <samp>C:\</samp>, the root
+directory of drive <samp>C:</samp>, and <code>HOME</code> is set neither in the
+environment nor in the Registry, Emacs will treat <samp>C:\</samp> as the
+default <code>HOME</code> location, and will not look in the application
+data directory, even if it exists.  Note that only <samp>.emacs</samp> is
+looked for in <samp>C:\</samp>; the older name <samp>_emacs</samp> (see below) is
+not.  This use of <samp>C:\.emacs</samp> to define <code>HOME</code> is
+deprecated; Emacs will display a warning about its use during
+startup.
+</p>
+<p>Whatever the final place is, Emacs sets the internal value of the
+<code>HOME</code> environment variable to point to it, and it will use that
+location for other files and directories it normally looks for or
+creates in your home directory.
+</p>
+<p>You can always find out what Emacs thinks is your home directory&rsquo;s
+location by typing <kbd>C-x d ~/ <span class="key">RET</span></kbd>.  This should present the
+list of files in the home directory, and show its full name on the
+first line.  Likewise, to visit your init file, type <kbd>C-x C-f
+~/.emacs <span class="key">RET</span></kbd> (assuming the file&rsquo;s name is <samp>.emacs</samp>).
+</p>
+<a name="index-init-file-_002eemacs-on-MS_002dWindows"></a>
+<p>Your init file can have any name mentioned in <a href="Init-File.html#Init-File">Init File</a>.
+</p>
+<a name="index-_005femacs-init-file_002c-MS_002dWindows"></a>
+<p>Because MS-DOS does not allow file names with leading dots, and
+older Windows systems made it hard to create files with such names,
+the Windows port of Emacs supports an init file name <samp>_emacs</samp>, if
+such a file exists in the home directory and <samp>.emacs</samp> does not.
+This name is considered obsolete, so Emacs will display a warning if
+it is used.
+</p>
+<div class="footnote">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h3><a name="FOOT25" href="#DOCF25">(25)</a></h3>
+<p>Older versions of Emacs didn&rsquo;t check the application data directory.
+</p>
+</div>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Windows-Keyboard.html#Windows-Keyboard" accesskey="n" rel="next">Windows Keyboard</a>, Previous: <a href="ls-in-Lisp.html#ls-in-Lisp" accesskey="p" rel="prev">ls in Lisp</a>, Up: <a href="Microsoft-Windows.html#Microsoft-Windows" accesskey="u" rel="up">Microsoft Windows</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Key-Index.html#Key-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>
