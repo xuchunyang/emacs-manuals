@@ -63,3 +63,5 @@ build 26.1
 # build 24.4
 # build 24.3
 
+cd $ROOT
+cp index.html $DIST
