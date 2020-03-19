@@ -321,3 +321,34 @@ div.header {
     background-color: #DDDDFF;
     padding-top: 0.2em;
 }
+
+
+/* Customization */
+
+body {
+    font-family: "Source Serif Pro";
+    font-size: 14pt;
+    line-height: 1.4;
+    background-color: #fefefc;
+    color: #202010;
+}
+
+body > h1, body > h2, body > h3, body > h4,
+body > h5, body > h6, body > p, body > dl,
+body > div {
+    width: 700px;
+    margin: auto;
+}
+
+div.header {
+    width: 700px;
+    margin: auto;
+}
+
+dd {
+    margin: .5em 6% 1em 6%
+}
+
+code {
+    font-size: 13pt;
+}
