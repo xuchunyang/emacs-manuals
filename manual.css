@@ -333,6 +333,11 @@ body {
     color: #202010;
 }
 
+pre.menu-comment {
+    font-family: Charter, serif;
+    font-size: 14pt;
+}
+
 body > * {
     width: 700px;
     margin-left: auto;
