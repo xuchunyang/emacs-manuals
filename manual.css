@@ -357,7 +357,7 @@ dd {
     margin: .5em 6% 1em 6%
 }
 
-code, pre, kbd {
+code, pre, kbd, samp, tt {
     font-size: 12pt;
     font-family: Courier, monospace;
 }
