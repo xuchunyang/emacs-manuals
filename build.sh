@@ -13,7 +13,7 @@ CSS=$ROOT/manual.css
 download() {
     if test ! -d "$SRC"; then
         cd "$ROOT"
-        git clone 'https://github.com/emacs-mirror/emacs.git'
+        git clone 'git://git.sv.gnu.org/emacs.git'
     fi
 }
 
