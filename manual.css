@@ -326,7 +326,7 @@ div.header {
 /* Customization */
 
 body {
-    font-family: "Source Serif Pro";
+    font-family: "Source Serif Pro" Charter serif;
     font-size: 14pt;
     line-height: 1.4;
     background-color: #fefefc;
@@ -335,7 +335,7 @@ body {
 
 body > h1, body > h2, body > h3, body > h4,
 body > h5, body > h6, body > p, body > dl,
-body > div {
+body > div, body > table, body > div.example {
     width: 700px;
     margin: auto;
 }
@@ -349,6 +349,7 @@ dd {
     margin: .5em 6% 1em 6%
 }
 
-code {
-    font-size: 13pt;
+code, pre {
+    font-size: 12pt;
+    font-family: Courier monospace;
 }
