@@ -19,7 +19,8 @@ download() {
 
 config() {
     cd "$SRC"
-    make distclean
+    # https://lists.gnu.org/archive/html/help-gnu-emacs/2017-05/msg00073.html
+    git clean -xf
     ./autogen.sh
     ./configure --with-x-toolkit=no --without-x --without-all
 }
@@ -56,12 +57,12 @@ build 27.0.90
 build 26.3
 build 26.2
 build 26.1
-# build 25.3                      # build failed
-# build 25.2
-# build 25.1
-# build 24.5
-# build 24.4
-# build 24.3
+build 25.3
+build 25.2
+build 25.1
+build 24.5
+build 24.4
+build 24.3
 
 cd $ROOT
 cp index.html $DIST
