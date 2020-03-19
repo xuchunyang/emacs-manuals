@@ -326,7 +326,7 @@ div.header {
 /* Customization */
 
 body {
-    font-family: Charter serif;
+    font-family: Charter, serif;
     font-size: 14pt;
     line-height: 1.4;
     background-color: #fefefc;
@@ -340,21 +340,24 @@ body > * {
 }
 
 div.header {
-    width: 700px;
+    width: 750px;
     margin-left: auto;
     margin-right: auto;
 }
 
+/* Documentation block for functions and variables. Make then
+   narrower*/
 dd {
     margin: .5em 6% 1em 6%
 }
 
 code, pre, kbd {
     font-size: 12pt;
-    font-family: Courier monospace;
+    font-family: Courier, monospace;
 }
 
-
+/* In each node we have index table to all sub-nodes. Make more space
+   for the first column, which is the name to each sub-node. */
 table.menu tbody tr td:nth-child(1) {
     width: 40%;
 }
