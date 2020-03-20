@@ -39,6 +39,9 @@ build() {
     local output=$DIST/$version/
     mkdir -p "$output"
 
+    # Fake (dir) node, just redirect to index.
+    cp -r "$ROOT"/dir "$output"
+
     cd "$SRC"/doc/lispref
     make -e HTML_OPTS="--html --css-ref=./manual.css" elisp.html
     mv elisp.html "$output"/elisp
@@ -64,5 +67,4 @@ build 24.5
 build 24.4
 build 24.3
 
-cd $ROOT
-cp index.html $DIST
+cp "$ROOT"/index.html "$DIST"
