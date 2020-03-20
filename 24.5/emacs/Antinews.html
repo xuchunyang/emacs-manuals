@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This is the GNU Emacs Manual,
+updated for Emacs version 24.5.
+
+Copyright © 1985-1987, 1993-2015 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being "The GNU Manifesto," "Distribution" and
+"GNU GENERAL PUBLIC LICENSE," with the Front-Cover Texts being "A GNU
+Manual," and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled "GNU Free Documentation
+License."
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Antinews (GNU Emacs Manual)</title>
+
+<meta name="description" content="Antinews (GNU Emacs Manual)">
+<meta name="keywords" content="Antinews (GNU Emacs Manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Key-Index.html#Key-Index" rel="index" title="Key Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Mac-OS-_002f-GNUstep.html#Mac-OS-_002f-GNUstep" rel="next" title="Mac OS / GNUstep">
+<link href="GTK-styles.html#GTK-styles" rel="prev" title="GTK styles">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="./manual.css">
+
+
+</head>
+
+<body lang="en">
+<a name="Antinews"></a>
+<div class="header">
+<p>
+Next: <a href="Mac-OS-_002f-GNUstep.html#Mac-OS-_002f-GNUstep" accesskey="n" rel="next">Mac OS / GNUstep</a>, Previous: <a href="X-Resources.html#X-Resources" accesskey="p" rel="prev">X Resources</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Key-Index.html#Key-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Emacs-23-Antinews"></a>
+<h2 class="appendix">Appendix E Emacs 23 Antinews</h2>
+
+<p>For those users who live backwards in time, here is information
+about downgrading to Emacs version 23.4.  We hope you will enjoy the
+greater simplicity that results from the absence of many Emacs
+24.5 features.
+</p>
+<ul>
+<li> Support for displaying and editing &ldquo;bidirectional&rdquo; text has been
+removed.  Text is now always displayed on the screen in a single
+consistent direction&mdash;left to right&mdash;regardless of the underlying
+script.  Similarly, <kbd>C-f</kbd> and <kbd>C-b</kbd> always move the text
+cursor to the right and left respectively.  Also, <tt class="key">RIGHT</tt> and
+<tt class="key">LEFT</tt> are now equivalent to <kbd>C-f</kbd> and <kbd>C-b</kbd>, as you might
+expect, rather than moving forward or backward based on the underlying
+&ldquo;paragraph direction&rdquo;.
+
+<p>Users of &ldquo;right-to-left&rdquo; languages, like Arabic and Hebrew, may
+adapt by reading and/or editing text in left-to-right order.
+</p>
+</li><li> The Emacs Lisp package manager has been removed.  Instead of using a
+&ldquo;user interface&rdquo; (<kbd>M-x list-packages</kbd>), additional Lisp packages
+must now be installed by hand, which is the most flexible and
+&ldquo;Lispy&rdquo; method anyway.  Typically, this just involves editing your
+init file to add the package installation directory to the load path
+and defining some autoloads; see each package&rsquo;s commentary section
+and/or README file for details.
+
+</li><li> The option <code>delete-active-region</code> has been deleted.  When the
+region is active, typing <tt class="key">DEL</tt> or <tt class="key">Delete</tt> no longer deletes
+the text in the region; it deletes a single character instead.
+
+</li><li> We have reworked how Emacs handles the clipboard and the X primary
+selection.  Commands for killing and yanking, like <kbd>C-w</kbd> and
+<kbd>C-y</kbd>, use the primary selection and not the clipboard, so you can
+use these commands without interfering with &ldquo;cutting&rdquo; or &ldquo;pasting&rdquo;
+in other programs.  The &lsquo;<samp>Cut</samp>&rsquo;/&lsquo;<samp>Copy</samp>&rsquo;/&lsquo;<samp>Paste</samp>&rsquo; menu items
+are bound to separate clipboard commands, not to the same commands as
+<kbd>C-w</kbd>/<kbd>M-w</kbd>/<kbd>C-y</kbd>.
+
+<p>Selecting text by dragging with the mouse now puts the text in the
+kill ring, in addition to the primary selection.  But note that
+selecting an active region with <kbd>C-<span class="key">SPC</span></kbd> does <em>not</em>
+alter the kill ring nor the primary selection, even though the text
+highlighting is visually identical.
+</p>
+</li><li> In Isearch, <kbd>C-y</kbd> and <kbd>M-y</kbd> are no longer bound to
+<code>isearch-yank-kill</code> and <code>isearch-yank-pop</code> respectively.
+Instead, <kbd>C-y</kbd> yanks the rest of the current line into the search
+string (<code>isearch-yank-line</code>), whereas <kbd>M-y</kbd> does
+<code>isearch-yank-kill</code>.  The mismatch with the usual meanings of
+<kbd>C-y</kbd> and <kbd>M-y</kbd> is unintended.
+
+</li><li> Various completion features have been simplified.  The option
+<code>completion-category-overrides</code> has been removed, so Emacs uses a
+single consistent scheme to generate completions, instead of using a
+separate scheme for (say) buffer name completion.  Several major
+modes, such as Shell mode, now implement their own inline completion
+commands instead of using <code>completion-at-point</code>.
+
+</li><li> We have removed several options for controlling how windows are used,
+such as <code>display-buffer-base-action</code>,
+<code>display-buffer-alist</code>, <code>window-combination-limit</code>, and
+<code>window-combination-resize</code>.
+
+</li><li> The command <kbd>M-x customize-themes</kbd> has been removed.  Emacs no
+longer comes with pre-defined themes (you can write your own).
+
+</li><li> Emacs no longer adapts various aspects of its display to GTK+
+settings, opting instead for a uniform toolkit-independent look.  GTK+
+scroll bars are placed on the left, the same position as non-GTK+ X
+scroll bars.  Emacs no longer refers to GTK+ to set the default
+<code>region</code> face, nor for drawing tooltips.
+
+</li><li> Setting the option <code>delete-by-moving-to-trash</code> to a
+non-<code>nil</code> value now causes all file deletions to use the system trash,
+even temporary files created by Lisp programs; furthermore, the
+<kbd>M-x delete-file</kbd> and <kbd>M-x delete-directory</kbd> commands no
+longer accept prefix arguments to force true deletion.
+
+</li><li> On GNU/Linux and Unix, the default method for sending mail (as
+specified by <code>send-mail-function</code>) is to use the
+<code>sendmail</code> program.  Emacs no longer asks for a delivery
+method the first time you try to send mail, trusting instead that the
+system is configured for mail delivery, as it ought to be.
+
+</li><li> Several VC features have been removed, including the <kbd>C-x v +</kbd> and
+<kbd>C-x v m</kbd> commands for pulling and merging on distributed version
+control systems, and the ability to view inline log entries in the log
+buffers made by <kbd>C-x v L</kbd>.
+
+</li><li> To keep up with decreasing computer memory capacity and disk space, many
+other functions and files have been eliminated in Emacs 23.4.
+</li></ul>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Mac-OS-_002f-GNUstep.html#Mac-OS-_002f-GNUstep" accesskey="n" rel="next">Mac OS / GNUstep</a>, Previous: <a href="X-Resources.html#X-Resources" accesskey="p" rel="prev">X Resources</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Key-Index.html#Key-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

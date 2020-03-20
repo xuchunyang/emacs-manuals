@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This is the GNU Emacs Manual,
+updated for Emacs version 24.5.
+
+Copyright © 1985-1987, 1993-2015 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being "The GNU Manifesto," "Distribution" and
+"GNU GENERAL PUBLIC LICENSE," with the Front-Cover Texts being "A GNU
+Manual," and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled "GNU Free Documentation
+License."
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Basic Files (GNU Emacs Manual)</title>
+
+<meta name="description" content="Basic Files (GNU Emacs Manual)">
+<meta name="keywords" content="Basic Files (GNU Emacs Manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Key-Index.html#Key-Index" rel="index" title="Key Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Basic.html#Basic" rel="up" title="Basic">
+<link href="Basic-Help.html#Basic-Help" rel="next" title="Basic Help">
+<link href="Basic-Undo.html#Basic-Undo" rel="prev" title="Basic Undo">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="./manual.css">
+
+
+</head>
+
+<body lang="en">
+<a name="Basic-Files"></a>
+<div class="header">
+<p>
+Next: <a href="Basic-Help.html#Basic-Help" accesskey="n" rel="next">Basic Help</a>, Previous: <a href="Basic-Undo.html#Basic-Undo" accesskey="p" rel="prev">Basic Undo</a>, Up: <a href="Basic.html#Basic" accesskey="u" rel="up">Basic</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Key-Index.html#Key-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Files-1"></a>
+<h3 class="section">7.5 Files</h3>
+
+<p>Text that you insert in an Emacs buffer lasts only as long as the
+Emacs session.  To keep any text permanently, you must put it in a
+<em>file</em>.
+</p>
+<p>Suppose there is a file named <samp>test.emacs</samp> in your home
+directory.  To begin editing this file in Emacs, type
+</p>
+<div class="example">
+<pre class="example">C-x C-f test.emacs <span class="key">RET</span>
+</pre></div>
+
+<p>Here the file name is given as an <em>argument</em> to the command <kbd>C-x
+C-f</kbd> (<code>find-file</code>).  That command uses the <em>minibuffer</em> to
+read the argument, and you type <tt class="key">RET</tt> to terminate the argument
+(see <a href="Minibuffer.html#Minibuffer">Minibuffer</a>).
+</p>
+<p>Emacs obeys this command by <em>visiting</em> the file: it creates a
+buffer, copies the contents of the file into the buffer, and then
+displays the buffer for editing.  If you alter the text, you can
+<em>save</em> the new text in the file by typing <kbd>C-x C-s</kbd>
+(<code>save-buffer</code>).  This copies the altered buffer contents back
+into the file <samp>test.emacs</samp>, making them permanent.  Until you
+save, the changed text exists only inside Emacs, and the file
+<samp>test.emacs</samp> is unaltered.
+</p>
+<p>To create a file, just visit it with <kbd>C-x C-f</kbd> as if it already
+existed.  This creates an empty buffer, in which you can insert the
+text you want to put in the file.  Emacs actually creates the file the
+first time you save this buffer with <kbd>C-x C-s</kbd>.
+</p>
+<p>To learn more about using files in Emacs, see <a href="Files.html#Files">Files</a>.
+</p>
+
+
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This is the GNU Emacs Manual,
+updated for Emacs version 25.1.
+
+Copyright © 1985-1987, 1993-2016 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being "The GNU Manifesto," "Distribution" and
+"GNU GENERAL PUBLIC LICENSE," with the Front-Cover Texts being "A GNU
+Manual," and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled "GNU Free Documentation
+License."
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Keys (GNU Emacs Manual)</title>
+
+<meta name="description" content="Keys (GNU Emacs Manual)">
+<meta name="keywords" content="Keys (GNU Emacs Manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Key-Index.html#Key-Index" rel="index" title="Key Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Commands.html#Commands" rel="next" title="Commands">
+<link href="User-Input.html#User-Input" rel="prev" title="User Input">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="./manual.css">
+
+
+</head>
+
+<body lang="en">
+<a name="Keys"></a>
+<div class="header">
+<p>
+Next: <a href="Commands.html#Commands" accesskey="n" rel="next">Commands</a>, Previous: <a href="User-Input.html#User-Input" accesskey="p" rel="prev">User Input</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Key-Index.html#Key-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Keys-1"></a>
+<h2 class="chapter">3 Keys</h2>
+
+<p>Some Emacs commands are invoked by just one input event; for
+example, <kbd>C-f</kbd> moves forward one character in the buffer.  Other
+commands take two or more input events to invoke, such as <kbd>C-x
+C-f</kbd> and <kbd>C-x 4 C-f</kbd>.
+</p>
+<a name="index-key"></a>
+<a name="index-key-sequence"></a>
+<a name="index-complete-key"></a>
+<a name="index-prefix-key"></a>
+<p>A <em>key sequence</em>, or <em>key</em> for short, is a sequence of one
+or more input events that is meaningful as a unit.  If a key sequence
+invokes a command, we call it a <em>complete key</em>; for example,
+<kbd>C-f</kbd>, <kbd>C-x C-f</kbd> and <kbd>C-x 4 C-f</kbd> are all complete keys.
+If a key sequence isn&rsquo;t long enough to invoke a command, we call it a
+<em>prefix key</em>; from the preceding example, we see that <kbd>C-x</kbd>
+and <kbd>C-x 4</kbd> are prefix keys.  Every key sequence is either a
+complete key or a prefix key.
+</p>
+<p>A prefix key combines with the following input event to make a
+longer key sequence.  For example, <kbd>C-x</kbd> is a prefix key, so
+typing <kbd>C-x</kbd> alone does not invoke a command; instead, Emacs waits
+for further input (if you pause for longer than a second, it echoes
+the <kbd>C-x</kbd> key to prompt for that input; see <a href="Echo-Area.html#Echo-Area">Echo Area</a>).
+<kbd>C-x</kbd> combines with the next input event to make a two-event key
+sequence, which could itself be a prefix key (such as <kbd>C-x 4</kbd>), or
+a complete key (such as <kbd>C-x C-f</kbd>).  There is no limit to the
+length of key sequences, but in practice they are seldom longer than
+three or four input events.
+</p>
+<p>You can&rsquo;t add input events onto a complete key.  For example,
+because <kbd>C-f</kbd> is a complete key, the two-event sequence <kbd>C-f
+C-k</kbd> is two key sequences, not one.
+</p>
+<p>By default, the prefix keys in Emacs are <kbd>C-c</kbd>, <kbd>C-h</kbd>,
+<kbd>C-x</kbd>, <kbd>C-x <span class="key">RET</span></kbd>, <kbd>C-x @</kbd>, <kbd>C-x a</kbd>, <kbd>C-x
+n</kbd>, <kbd>C-x r</kbd>, <kbd>C-x v</kbd>, <kbd>C-x 4</kbd>, <kbd>C-x 5</kbd>, <kbd>C-x 6</kbd>,
+<tt class="key">ESC</tt>, <kbd>M-g</kbd>, and <kbd>M-o</kbd>.  (<tt class="key">F1</tt> and <tt class="key">F2</tt> are
+aliases for <kbd>C-h</kbd> and <kbd>C-x 6</kbd>.)  This list is not cast in
+stone; if you customize Emacs, you can make new prefix keys.  You
+could even eliminate some of the standard ones, though this is not
+recommended for most users; for example, if you remove the prefix
+definition of <kbd>C-x 4</kbd>, then <kbd>C-x 4 C-f</kbd> becomes an invalid key
+sequence.  See <a href="Key-Bindings.html#Key-Bindings">Key Bindings</a>.
+</p>
+<p>Typing the help character (<kbd>C-h</kbd> or <tt class="key">F1</tt>) after a prefix key
+displays a list of the commands starting with that prefix.  The sole
+exception to this rule is <tt class="key">ESC</tt>: <kbd><span class="key">ESC</span> C-h</kbd> is equivalent
+to <kbd>C-M-h</kbd>, which does something else entirely.  You can, however,
+use <tt class="key">F1</tt> to display a list of commands starting with <tt class="key">ESC</tt>.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Commands.html#Commands" accesskey="n" rel="next">Commands</a>, Previous: <a href="User-Input.html#User-Input" accesskey="p" rel="prev">User Input</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Key-Index.html#Key-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

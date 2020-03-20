@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This is the GNU Emacs Manual,
+updated for Emacs version 24.5.
+
+Copyright © 1985-1987, 1993-2015 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being "The GNU Manifesto," "Distribution" and
+"GNU GENERAL PUBLIC LICENSE," with the Front-Cover Texts being "A GNU
+Manual," and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled "GNU Free Documentation
+License."
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Emergency Escape (GNU Emacs Manual)</title>
+
+<meta name="description" content="Emergency Escape (GNU Emacs Manual)">
+<meta name="keywords" content="Emergency Escape (GNU Emacs Manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Key-Index.html#Key-Index" rel="index" title="Key Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Lossage.html#Lossage" rel="up" title="Lossage">
+<link href="Bugs.html#Bugs" rel="next" title="Bugs">
+<link href="After-a-Crash.html#After-a-Crash" rel="prev" title="After a Crash">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="./manual.css">
+
+
+</head>
+
+<body lang="en">
+<a name="Emergency-Escape"></a>
+<div class="header">
+<p>
+Previous: <a href="After-a-Crash.html#After-a-Crash" accesskey="p" rel="prev">After a Crash</a>, Up: <a href="Lossage.html#Lossage" accesskey="u" rel="up">Lossage</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Key-Index.html#Key-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Emergency-Escape-1"></a>
+<h3 class="section">50.8 Emergency Escape</h3>
+<a name="index-emergency-escape"></a>
+
+<p>On text terminals, the <em>emergency escape</em> feature suspends Emacs
+immediately if you type <kbd>C-g</kbd> a second time before Emacs can
+actually respond to the first one by quitting.  This is so you can
+always get out of GNU Emacs no matter how badly it might be hung.
+When things are working properly, Emacs recognizes and handles the
+first <kbd>C-g</kbd> so fast that the second one won&rsquo;t trigger emergency
+escape.  However, if some problem prevents Emacs from handling the
+first <kbd>C-g</kbd> properly, then the second one will get you back to the
+shell.
+</p>
+<p>When you resume Emacs after a suspension caused by emergency escape,
+it asks two questions before going back to what it had been doing:
+</p>
+<div class="example">
+<pre class="example">Auto-save? (y or n)
+Abort (and dump core)? (y or n)
+</pre></div>
+
+<p>Answer each one with <kbd>y</kbd> or <kbd>n</kbd> followed by <tt class="key">RET</tt>.
+</p>
+<p>Saying <kbd>y</kbd> to &lsquo;<samp>Auto-save?</samp>&rsquo; causes immediate auto-saving of
+all modified buffers in which auto-saving is enabled.  Saying <kbd>n</kbd>
+skips this.
+</p>
+<p>Saying <kbd>y</kbd> to &lsquo;<samp>Abort (and dump core)?</samp>&rsquo; causes Emacs to
+crash, dumping core.  This is to enable a wizard to figure out why
+Emacs was failing to quit in the first place.  Execution does not
+continue after a core dump.
+</p>
+<p>If you answer this question <kbd>n</kbd>, Emacs execution resumes.  With
+luck, Emacs will ultimately do the requested quit.  If not, each
+subsequent <kbd>C-g</kbd> invokes emergency escape again.
+</p>
+<p>If Emacs is not really hung, just slow, you may invoke the double
+<kbd>C-g</kbd> feature without really meaning to.  Then just resume and
+answer <kbd>n</kbd> to both questions, and you will get back to the former
+state.  The quit you requested will happen by and by.
+</p>
+<p>Emergency escape is active only for text terminals.  On graphical
+displays, you can use the mouse to kill Emacs or switch to another
+program.
+</p>
+<p>On MS-DOS, you must type <kbd>C-<span class="key">Break</span></kbd> (twice) to cause
+emergency escape&mdash;but there are cases where it won&rsquo;t work, when
+system call hangs or when Emacs is stuck in a tight loop in C code.
+</p>
+<hr>
+<div class="header">
+<p>
+Previous: <a href="After-a-Crash.html#After-a-Crash" accesskey="p" rel="prev">After a Crash</a>, Up: <a href="Lossage.html#Lossage" accesskey="u" rel="up">Lossage</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Key-Index.html#Key-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This is the GNU Emacs Manual,
+updated for Emacs version 24.4.
+
+Copyright © 1985-1987, 1993-2014 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being "The GNU Manifesto," "Distribution" and
+"GNU GENERAL PUBLIC LICENSE," with the Front-Cover Texts being "A GNU
+Manual," and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled "GNU Free Documentation
+License."
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Find Tag (GNU Emacs Manual)</title>
+
+<meta name="description" content="Find Tag (GNU Emacs Manual)">
+<meta name="keywords" content="Find Tag (GNU Emacs Manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Key-Index.html#Key-Index" rel="index" title="Key Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Tags.html#Tags" rel="up" title="Tags">
+<link href="Tags-Search.html#Tags-Search" rel="next" title="Tags Search">
+<link href="Select-Tags-Table.html#Select-Tags-Table" rel="prev" title="Select Tags Table">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="./manual.css">
+
+
+</head>
+
+<body lang="en">
+<a name="Find-Tag"></a>
+<div class="header">
+<p>
+Next: <a href="Tags-Search.html#Tags-Search" accesskey="n" rel="next">Tags Search</a>, Previous: <a href="Select-Tags-Table.html#Select-Tags-Table" accesskey="p" rel="prev">Select Tags Table</a>, Up: <a href="Tags.html#Tags" accesskey="u" rel="up">Tags</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Key-Index.html#Key-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Finding-a-Tag"></a>
+<h4 class="subsection">28.3.5 Finding a Tag</h4>
+
+<p>The most important thing that a tags table enables you to do is to find
+the definition of a specific tag.
+</p>
+<dl compact="compact">
+<dt><kbd>M-. <var>tag</var> <span class="key">RET</span></kbd></dt>
+<dd><p>Find first definition of <var>tag</var> (<code>find-tag</code>).
+</p></dd>
+<dt><kbd>C-u M-.</kbd></dt>
+<dd><p>Find next alternate definition of last tag specified.
+</p></dd>
+<dt><kbd>C-u - M-.</kbd></dt>
+<dd><p>Go back to previous tag found.
+</p></dd>
+<dt><kbd>C-M-. <var>pattern</var> <span class="key">RET</span></kbd></dt>
+<dd><p>Find a tag whose name matches <var>pattern</var> (<code>find-tag-regexp</code>).
+</p></dd>
+<dt><kbd>C-u C-M-.</kbd></dt>
+<dd><p>Find the next tag whose name matches the last pattern used.
+</p></dd>
+<dt><kbd>C-x 4 . <var>tag</var> <span class="key">RET</span></kbd></dt>
+<dd><p>Find first definition of <var>tag</var>, but display it in another window
+(<code>find-tag-other-window</code>).
+</p></dd>
+<dt><kbd>C-x 5 . <var>tag</var> <span class="key">RET</span></kbd></dt>
+<dd><p>Find first definition of <var>tag</var>, and create a new frame to select the
+buffer (<code>find-tag-other-frame</code>).
+</p></dd>
+<dt><kbd>M-*</kbd></dt>
+<dd><p>Pop back to where you previously invoked <kbd>M-.</kbd> and friends.
+</p></dd>
+</dl>
+
+<a name="index-M_002d_002e"></a>
+<a name="index-find_002dtag"></a>
+<p><kbd>M-.</kbd> (<code>find-tag</code>) prompts for a tag name and jumps to
+its source definition.  It works by searching through the tags table
+for that tag&rsquo;s file and approximate character position, visiting that
+file, and searching for the tag definition at ever-increasing
+distances away from the recorded approximate position.
+</p>
+<p>When entering the tag argument to <kbd>M-.</kbd>, the usual minibuffer
+completion commands can be used (see <a href="Completion.html#Completion">Completion</a>), with the tag
+names in the selected tags table as completion candidates.  If you
+specify an empty argument, the balanced expression in the buffer
+before or around point is the default argument.  See <a href="Expressions.html#Expressions">Expressions</a>.
+</p>
+<p>You don&rsquo;t need to give <kbd>M-.</kbd> the full name of the tag; a part
+will do.  <kbd>M-.</kbd> finds tags which contain that argument as a
+substring.  However, it prefers an exact match to a substring match.
+To find other tags that match the same substring, give <code>find-tag</code>
+a numeric argument, as in <kbd>C-u M-.</kbd>  or <kbd>M-0 M-.</kbd>; this does
+not read a tag name, but continues searching the tags table&rsquo;s text for
+another tag containing the same substring last used.
+</p>
+<a name="index-C_002dx-4-_002e"></a>
+<a name="index-find_002dtag_002dother_002dwindow-1"></a>
+<a name="index-C_002dx-5-_002e"></a>
+<a name="index-find_002dtag_002dother_002dframe"></a>
+<p>Like most commands that can switch buffers, <code>find-tag</code> has a
+variant that displays the new buffer in another window, and one that
+makes a new frame for it.  The former is <kbd><span class="nolinebreak">C-x</span>&nbsp;4&nbsp;.</kbd><!-- /@w -->
+(<code>find-tag-other-window</code>), and the latter is <kbd><span class="nolinebreak">C-x</span>&nbsp;5&nbsp;.</kbd><!-- /@w -->
+(<code>find-tag-other-frame</code>).
+</p>
+<p>To move back to previous tag definitions, use <kbd>C-u - M-.</kbd>; more
+generally, <kbd>M-.</kbd> with a negative numeric argument.  Similarly,
+<kbd><span class="nolinebreak">C-x</span>&nbsp;4&nbsp;.</kbd><!-- /@w --> with a negative argument finds the previous tag
+location in another window.
+</p>
+<a name="index-M_002d_002a"></a>
+<a name="index-pop_002dtag_002dmark"></a>
+<a name="index-find_002dtag_002dmarker_002dring_002dlength"></a>
+<p>As well as going back to places you&rsquo;ve found tags recently, you can
+go back to places <em>from where</em> you found them, using <kbd>M-*</kbd>
+(<code>pop-tag-mark</code>).  Thus you can find and examine the definition
+of something with <kbd>M-.</kbd> and then return to where you were with
+<kbd>M-*</kbd>.
+</p>
+<p>Both <kbd>C-u - M-.</kbd> and <kbd>M-*</kbd> allow you to retrace your steps to
+a depth determined by the variable <code>find-tag-marker-ring-length</code>.
+</p>
+<a name="index-find_002dtag_002dregexp"></a>
+<a name="index-C_002dM_002d_002e"></a>
+<p>The command <kbd>C-M-.</kbd> (<code>find-tag-regexp</code>) visits the tags that
+match a specified regular expression.  It is just like <kbd>M-.</kbd> except
+that it does regexp matching instead of substring matching.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Tags-Search.html#Tags-Search" accesskey="n" rel="next">Tags Search</a>, Previous: <a href="Select-Tags-Table.html#Select-Tags-Table" accesskey="p" rel="prev">Select Tags Table</a>, Up: <a href="Tags.html#Tags" accesskey="u" rel="up">Tags</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Key-Index.html#Key-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>
