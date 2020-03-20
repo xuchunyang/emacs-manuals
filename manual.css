@@ -338,7 +338,8 @@ pre.menu-comment {
     font-size: 14pt;
 }
 
-body > *, body > div.example {
+body > *, body > div.display, body > div.lisp, body > div.smalldisplay,
+body > div.example, body > div.smallexample, body > div.smalllisp {
     width: 700px;
     margin-left: auto;
     margin-right: auto;
