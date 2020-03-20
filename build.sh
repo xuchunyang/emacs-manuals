@@ -53,11 +53,13 @@ build() {
     mv emacs.html "$output"/emacs
     cp "$CSS" "$output"/emacs
 
-    cd "$SRC"/doc/misc
-    make -e HTML_OPTS="--html --no-split --css-ref=./manual.css" html
-    mkdir "$output"/misc
-    mv *.html "$output"/misc
-    cp "$ROOT"/misc-index.html "$output"/misc/index.html
+    if [ "$version" != "24.3" ] ; then
+        cd "$SRC"/doc/misc
+        make -e HTML_OPTS="--html --no-split --css-ref=./manual.css" html
+        mkdir "$output"/misc
+        mv *.html "$output"/misc
+        cp "$ROOT"/misc-index.html "$output"/misc/index.html
+    fi
 }
 
 download
