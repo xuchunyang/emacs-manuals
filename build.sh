@@ -41,6 +41,7 @@ build() {
 
     # Fake (dir) node, just redirect to index.
     cp -r "$ROOT"/dir "$output"
+    
 
     cd "$SRC"/doc/lispref
     make -e HTML_OPTS="--html --css-ref=./manual.css" elisp.html
@@ -51,6 +52,12 @@ build() {
     make -e HTML_OPTS="--html --css-ref=./manual.css" emacs.html
     mv emacs.html "$output"/emacs
     cp "$CSS" "$output"/emacs
+
+    cd "$SRC"/doc/misc
+    make -e HTML_OPTS="--html --no-split --css-ref=./manual.css" html
+    mkdir "$output"/misc
+    mv *.html "$output"/misc
+    cp "$ROOT"/misc-index.html "$output"/misc/index.html
 }
 
 download
