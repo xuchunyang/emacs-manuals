@@ -59,6 +59,7 @@ build() {
         mkdir "$output"/misc
         mv *.html "$output"/misc
         cp "$ROOT"/misc-index.html "$output"/misc/index.html
+        cp "$CSS" "$output"/misc
     fi
 }
 
