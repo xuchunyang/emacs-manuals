@@ -365,5 +365,5 @@ code, pre, kbd, samp, tt {
 /* In each node we have index table to all sub-nodes. Make more space
    for the first column, which is the name to each sub-node. */
 table.menu tbody tr td:nth-child(1) {
-    width: 40%;
+    white-space: nowrap;
 }
