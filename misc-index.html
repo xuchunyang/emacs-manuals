@@ -11,80 +11,263 @@
          white-space: nowrap;
      }
      body {
-         width: 700px;
+         width: 750px;
          margin: auto;
          font-family: Charter, serif;
          font-size: 14pt;
-         line-height: 1.4;
+         line-height: 1.8;
          padding-top: 3em;
          background-color: #fefefc;
          color: #202010;
      }
      a {
          color:  #202010;
-         display: inline-block;
-         width: 24%;
+         white-space: nowrap;
+         text-align: right;
+     }
+     td {
+         vertical-align: top;
+     }
+     td:first-child {
+         padding-right: 2em;
+         text-align: right;
      }
     </style>
   </head>
   <body lang="en">
-    <a href="./auth.html">auth</a>
-    <a href="./autotype"></a>
-    <a href="./bovine.html">bovine</a>
-    <a href="./calc.html">calc</a>
-    <a href="./cc-mode.html">cc</a>
-    <a href="./cl.html">cl</a>
-    <a href="./dbus.html">dbus</a>
-    <a href="./dired-x.html">dired</a>
-    <a href="./ebrowse.html">ebrowse</a>
-    <a href="./ede.html">ede</a>
-    <a href="./ediff.html">ediff</a>
-    <a href="./edt.html">edt</a>
-    <a href="./eieio.html">eieio</a>
-    <a href="./emacs-mime.html">emacs</a>
-    <a href="./epa.html">epa</a>
-    <a href="./erc.html">erc</a>
-    <a href="./ert.html">ert</a>
-    <a href="./eshell.html">eshell</a>
-    <a href="./eudc.html">eudc</a>
-    <a href="./efaq.html">efaq</a>
-    <a href="./eww.html">eww</a>
-    <a href="./flymake.html">flymake</a>
-    <a href="./forms.html">forms</a>
-    <a href="./gnus.html">gnus</a>
-    <a href="./emacs-gnutls.html">emacs</a>
-    <a href="./htmlfontify.html">htmlfontify</a>
-    <a href="./idlwave.html">idlwave</a>
-    <a href="./ido.html">ido</a>
-    <a href="./info.html">info</a>
-    <a href="./mairix-el.html">mairix</a>
-    <a href="./message.html">message</a>
-    <a href="./mh-e.html">mh</a>
-    <a href="./newsticker.html">newsticker</a>
-    <a href="./nxml-mode.html">nxml</a>
-    <a href="./octave-mode.html">octave</a>
-    <a href="./org.html">org</a>
-    <a href="./pcl-cvs.html">pcl</a>
-    <a href="./pgg.html">pgg</a>
-    <a href="./rcirc.html">rcirc</a>
-    <a href="./remember.html">remember</a>
-    <a href="./reftex.html">reftex</a>
-    <a href="./sasl.html">sasl</a>
-    <a href="./sc.html">sc</a>
-    <a href="./semantic.html">semantic</a>
-    <a href="./ses.html">ses</a>
-    <a href="./sieve.html">sieve</a>
-    <a href="./smtpmail.html">smtpmail</a>
-    <a href="./speedbar.html">speedbar</a>
-    <a href="./srecode.html">srecode</a>
-    <a href="./todo-mode.html">todo</a>
-    <a href="./tramp.html">tramp</a>
-    <a href="./url.html">url</a>
-    <a href="./vhdl-mode.html">vhdl</a>
-    <a href="./vip.html">vip</a>
-    <a href="./viper.html">viper</a>
-    <a href="./widget.html">widget</a>
-    <a href="./wisent.html">wisent</a>
-    <a href="./woman.html">woman</a>
+    <table>
+      <tr>
+        <td><a href="./efaq.html">GNU Emacs FAQ</a></td>
+        <td>Emacs FAQ</td>
+      </tr>
+      <tr>
+        <td><a href="./auth.html">Auth-source</a></td>
+        <td>Emacs library for storing and sharing secret data.</td>
+      </tr>
+      <tr>
+        <td><a href="./autotype">Autotype</a></td>
+        <td>Features for frequently-entered text.</td>
+      </tr>
+      <tr>
+        <td><a href="./calc.html">Calc</a></td>
+        <td>Calc is an advanced calculator and mathematical tool.</td>
+      </tr>
+      <tr>
+        <td><a href="./cc-mode.html">CC mode</a></td>
+        <td>Mode for editing C, C++, Objective C, Java, Pike, and IDL code.</td>
+      </tr>
+      <tr>
+        <td><a href="./cl.html">CL</a></td>
+        <td>GNU Emacs Common Lisp support.</td>
+      </tr>
+      <tr>
+        <td><a href="./dbus.html">D-Bus</a></td>
+        <td>Emacs API for using the D-Bus message bus system.</td>
+      </tr>
+      <tr>
+        <td><a href="./dired-x.html">Dired-X</a></td>
+        <td>Extra Dired features.</td>
+      </tr>
+      <tr>
+        <td><a href="./ebrowse.html">Ebrowse</a></td>
+        <td>C++ class browser.</td>
+      </tr>
+      <tr>
+        <td><a href="./ede.html">EDE</a></td>
+        <td>Package to simplify building and debugging programs.</td>
+      </tr>
+      <tr>
+        <td><a href="./edt.html">EDT</a></td>
+        <td>EDT Emulator.</td>
+      </tr>
+      <tr>
+        <td><a href="./ediff.html">Ediff</a></td>
+        <td>Visual interface for comparing and merging programs.</td>
+      </tr>
+      <tr>
+        <td><a href="./eieio.html">EIEIO</a></td>
+        <td>Common Lisp Object System library for Emacs.</td>
+      </tr>
+      <tr>
+        <td><a href="./emacs-gnutls.html">Emacs GnuTLS</a></td>
+        <td>Emacs interface to the GnuTLS library.</td>
+      </tr>
+      <tr>
+        <td><a href="./emacs-mime.html">Emacs MIME</a></td>
+        <td>Emacs library for composing and showing MIME messages.</td>
+      </tr>
+      <tr>
+        <td><a href="./epa.html">EasyPG Assistant</a></td>
+        <td>Emacs user interface to the GNU Privacy Guard.</td>
+      </tr>
+      <tr>
+        <td><a href="./erc.html">ERC</a></td>
+        <td>Modular and extensible IRC client for Emacs.</td>
+      </tr>
+      <tr>
+        <td><a href="./ert.html">ERT</a></td>
+        <td>The Emacs Lisp Regression Testing tool.</td>
+      </tr>
+      <tr>
+        <td><a href="./eshell.html">Eshell</a></td>
+        <td>Command shell implemented in Emacs Lisp.</td>
+      </tr>
+      <tr>
+        <td><a href="./eudc.html">EUDC</a></td>
+        <td>The Emacs Unified Directory Client.</td>
+      </tr>
+      <tr>
+        <td><a href="./eww.html">EWW</a></td>
+        <td>A web browser.</td>
+      </tr>
+      <tr>
+        <td><a href="./forms.html">Forms</a></td>
+        <td>Mode for manipulating text forms.</td>
+      </tr>
+      <tr>
+        <td><a href="./flymake.html">Flymake</a></td>
+        <td>On-the-fly programming language syntax checker.</td>
+      </tr>
+      <tr>
+        <td><a href="./gnus.html">Gnus</a></td>
+        <td>Mail and news reader.</td>
+      </tr>
+      <tr>
+        <td><a href="./htmlfontify.html">Htmlfontify</a></td>
+        <td>Export buffers to HTML.</td>
+      </tr>
+      <tr>
+        <td><a href="./idlwave.html">IDLWAVE</a></td>
+        <td>Major mode and shell for IDL and WAVE/CL files.</td>
+      </tr>
+      <tr>
+        <td><a href="./ido.html">IDO</a></td>
+        <td>A package for interactively doing things.</td>
+      </tr>
+      <tr>
+        <td><a href="./info.html">Info</a></td>
+        <td>The Info documentation browser.</td>
+      </tr>
+      <tr>
+        <td><a href="./mairix-el.html">Mairix</a></td>
+        <td>Emacs interface to the Mairix email indexing tool.</td>
+      </tr>
+      <tr>
+        <td><a href="./message.html">Message</a></td>
+        <td>Mail and news composition mode for Gnus.</td>
+      </tr>
+      <tr>
+        <td><a href="./mh-e.html">MH-E</a></td>
+        <td>Interface to the MH mail system.</td>
+      </tr>
+      <tr>
+        <td><a href="./newsticker.html">Newsticker</a></td>
+        <td>A newsticker for Emacs.</td>
+      </tr>
+      <tr>
+        <td><a href="./nxml-mode.html">nXML</a></td>
+        <td>XML editing mode with RELAX NG support.</td>
+      </tr>
+      <tr>
+        <td><a href="./octave-mode.html">Octave mode</a></td>
+        <td>Major mode for GNU Octave code.</td>
+      </tr>
+      <tr>
+        <td><a href="./org.html">Org mode</a></td>
+        <td>Outline-based note manager and organizer.</td>
+      </tr>
+      <tr>
+        <td><a href="./pcl-cvs.html">PCL-CVS</a></td>
+        <td>Front-end to CVS.</td>
+      </tr>
+      <tr>
+        <td><a href="./pgg.html">PGG</a></td>
+        <td>Obsolete interface library for secure communication; see EasyPG.</td>
+      </tr>
+      <tr>
+        <td><a href="./rcirc.html">RCIRC</a></td>
+        <td>IRC client for Emacs.</td>
+      </tr>
+      <tr>
+        <td><a href="./reftex.html">RefTex</a></td>
+        <td>Manage labels, references, citations and index entries.</td>
+      </tr>
+      <tr>
+        <td><a href="./remember.html">Remember</a></td>
+        <td>Tool for managing todo lists, schedules, and other data.</td>
+      </tr>
+      <tr>
+        <td><a href="./sasl.html">SASL</a></td>
+        <td>Emacs interface to the SASL (Simple Authentication and Security Layer) framework.</td>
+      </tr>
+      <tr>
+        <td><a href="./semantic.html">Semantic</a></td>
+        <td>Source code parsing utilities for Emacs.</td>
+      </tr>
+      <tr>
+        <td><a href="./bovine.html">Semantic parser (bovine)</a></td>
+        <td>The original Semantic parser.</td>
+      </tr>
+      <tr>
+        <td><a href="./srecode.html">Semantic Recoder</a></td>
+        <td>Converts information from Semantic back into code.</td>
+      </tr>
+      <tr>
+        <td><a href="./ses.html">SES</a></td>
+        <td>The Simple Emacs Spreadsheet.</td>
+      </tr>
+      <tr>
+        <td><a href="./sieve.html">Sieve</a></td>
+        <td>Mode for the Sieve mail filtering language.</td>
+      </tr>
+      <tr>
+        <td><a href="./smtpmail.html">SMTP</a></td>
+        <td>Emacs library for sending mail via SMTP.</td>
+      </tr>
+      <tr>
+        <td><a href="./speedbar.html">Speedbar</a></td>
+        <td>File and tag summarizing utility.</td>
+      </tr>
+      <tr>
+        <td><a href="./sc.html">Supercite</a></td>
+        <td>Package for citing and attributing messages.</td>
+      </tr>
+      <tr>
+        <td><a href="./todo-mode.html">Todo mode</a></td>
+        <td>Keeping track of things to do.</td>
+      </tr>
+      <tr>
+        <td><a href="./tramp.html">Tramp</a></td>
+        <td>Transparent remote file access system.</td>
+      </tr>
+      <tr>
+        <td><a href="./url.html">URL</a></td>
+        <td>Library for manipulating and retrieving URLs and URIs.</td>
+      </tr>
+      <tr>
+        <td><a href="./vhdl-mode.html">VHDL mode</a></td>
+        <td>A major mode for editing VHDL code.</td>
+      </tr>
+      <tr>
+        <td><a href="./vip.html">VIP</a></td>
+        <td>An older VI emulator.</td>
+      </tr>
+      <tr>
+        <td><a href="./viper.html">Viper</a></td>
+        <td>VI emulator.</td>
+      </tr>
+      <tr>
+        <td><a href="./widget.html">Widget</a></td>
+        <td>Library for graphical widgets.</td>
+      </tr>
+      <tr>
+        <td><a href="./wisent.html">Wisent</a></td>
+        <td>An Emacs implementation of the GNU Compiler Compiler Bison.</td>
+      </tr>
+      <tr>
+        <td><a href="./woman.html">Woman</a></td>
+        <td>Browsing UN*X pages without man.</td>
+      </tr>
+    </table>
   </body>
 </html>
